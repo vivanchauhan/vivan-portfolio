@@ -1,15 +1,20 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Cursor() {
   const cursorRef = useRef(null);
   const ringRef = useRef(null);
   const pos = useRef({ mx: 0, my: 0, rx: 0, ry: 0 });
-
-  const isTouch =
-    typeof window !== "undefined" && window.matchMedia("(hover: none)").matches;
+  const [isTouch, setIsTouch] = useState(true);
 
   useEffect(() => {
-    // Don't attach any listeners on touch/mobile devices
+    // Hide on screens smaller than 1024px (tablets and phones)
+    const check = () => setIsTouch(window.innerWidth < 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  useEffect(() => {
     if (isTouch) return;
 
     const onMove = (e) => {
@@ -71,7 +76,6 @@ export default function Cursor() {
     };
   }, [isTouch]);
 
-  // Don't render anything on touch/mobile
   if (isTouch) return null;
 
   return (
