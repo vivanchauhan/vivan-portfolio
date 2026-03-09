@@ -11,7 +11,7 @@ export default function Contact() {
     setStatus("sending");
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL || ""}/api/contact`,
+        `${(import.meta.env.VITE_API_URL || "").replace(/\/$/, "")}/api/contact`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
