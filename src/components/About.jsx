@@ -9,12 +9,12 @@ const certs = [
   {
     name: "Full Stack Web Development",
     org: "GeeksforGeeks",
-    link: "https://www.geeksforgeeks.org/certificate/ea598becc7733b700e3e236aa839a24b/1",
+    link: "https://www.geeksforgeeks.org/certificate/ea598becc7733b700e3e236aa839a24b",
   },
   {
     name: "Git Version Control",
     org: "GeeksforGeeks",
-    link: "https://www.geeksforgeeks.org/certificate/30a4c26644f737d6da8c713444ccfb67/2",
+    link: "https://www.geeksforgeeks.org/certificate/30a4c26644f737d6da8c713444ccfb67",
   },
   {
     name: "JavaScript (Basic)",
