@@ -23,6 +23,7 @@ export default function Achievements() {
       style={{
         padding: "clamp(60px,8vw,120px) clamp(20px,5vw,48px)",
         background: "#080808",
+        overflow: "hidden",
       }}
     >
       <div className="section-label">04 — Achievements</div>
@@ -34,7 +35,7 @@ export default function Achievements() {
         style={{
           display: "grid",
           gridTemplateColumns:
-            "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
+            "repeat(auto-fit, minmax(min(100% - 2px, 260px), 1fr))",
           gap: 2,
         }}
       >
