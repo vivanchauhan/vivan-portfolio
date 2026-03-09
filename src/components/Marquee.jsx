@@ -11,7 +11,9 @@ const items = [
 ];
 
 export default function Marquee() {
-  const doubled = [...items, ...items];
+  // Triple the items so there's always enough content to fill any screen width
+  const tripled = [...items, ...items, ...items];
+
   return (
     <div
       style={{
@@ -19,41 +21,57 @@ export default function Marquee() {
         borderBottom: "1px solid rgba(255,255,255,0.07)",
         padding: "18px 0",
         overflow: "hidden",
+        width: "100%",
       }}
     >
       <div
         style={{
           display: "flex",
-          gap: 60,
-          animation: "marquee 25s linear infinite",
-          whiteSpace: "nowrap",
           width: "max-content",
+          willChange: "transform",
+          animation: "marquee 40s linear infinite",
         }}
       >
-        {doubled.map((item, i) => (
-          <span
+        {tripled.map((item, i) => (
+          <div
             key={i}
             style={{
-              fontFamily: "'Bebas Neue', sans-serif",
-              fontSize: 14,
-              letterSpacing: 4,
-              color: "#5a5a5a",
-              display: "flex",
+              display: "inline-flex",
               alignItems: "center",
-              gap: 60,
+              flexShrink: 0,
+              whiteSpace: "nowrap",
             }}
           >
-            {item}
-            {i < doubled.length - 1 && (
-              <span style={{ color: "#FF6B2B", fontSize: 18 }}>·</span>
-            )}
-          </span>
+            <span
+              style={{
+                fontFamily: "'Bebas Neue', sans-serif",
+                fontSize: 14,
+                letterSpacing: 3,
+                color: "#5a5a5a",
+                padding: "0 28px",
+                whiteSpace: "nowrap",
+                flexShrink: 0,
+              }}
+            >
+              {item}
+            </span>
+            <span
+              style={{
+                color: "#FF6B2B",
+                fontSize: 16,
+                flexShrink: 0,
+                lineHeight: 1,
+              }}
+            >
+              ·
+            </span>
+          </div>
         ))}
       </div>
       <style>{`
         @keyframes marquee {
           from { transform: translateX(0); }
-          to   { transform: translateX(-50%); }
+          to   { transform: translateX(-33.333%); }
         }
       `}</style>
     </div>
